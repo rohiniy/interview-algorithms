@@ -1,7 +1,7 @@
 package com.basicAlgorithms.medium;
 import java.util.*;
 
-public class AnujTest {
+public class SoldierManagerExistsCount {
   public static int solution(int[] ranks) {
     if (ranks == null || ranks.length <= 1) {
       return 0;

@@ -73,6 +73,4 @@ public class MinimumJumpsToReachEndInArray {
     System.out.println(jumpGreedy(new int[]{2,3,1,1,4}));
 
   }
-
-
 }
