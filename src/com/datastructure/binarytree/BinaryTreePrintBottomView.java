@@ -159,11 +159,35 @@ public class BinaryTreePrintBottomView {
     return list;
   }
 
-  // root = val = 0
-  // left, val -1 = -1
-  // right, val+1 = 1
+  public static List<List<Integer>> verticalOrder(TreeNode root) {
+    // left = -1, right = +1, root = 0
+    // create a map with <horizontal level, Lis<TreeNode>>
+    Map<Integer, List<Integer>> map = new HashMap<>();
+    List<List<Integer>> result = new ArrayList<>();
 
-  // Map <>
+    int smallestHLevel = verticalLevel(root, 0, map, 0);
+
+    for (int i=smallestHLevel; i< (smallestHLevel+map.size()); i++) {
+      result.add(map.get(i));
+    }
+    return result;
+
+  }
+
+  private static int verticalLevel(TreeNode root, int level,
+                            Map<Integer, List<Integer>> map, int smallestHLevel) {
+    if (root == null) {
+      return smallestHLevel;
+    }
+
+    smallestHLevel = smallestHLevel > level ? level : smallestHLevel;
+    List<Integer> list = map.getOrDefault(level, new LinkedList<Integer>());
+    list.add(root.val);
+    map.put(level, list);
+    smallestHLevel =verticalLevel(root.left, level-1, map, smallestHLevel);
+    smallestHLevel =verticalLevel(root.right, level+1,map, smallestHLevel);
+    return smallestHLevel;
+  }
 
   public static void main(String args[]) {
     BinaryTree tree = new BinaryTree();
@@ -189,5 +213,7 @@ public class BinaryTreePrintBottomView {
     printBottomView(tree.root);
 
     printBottomView1(tree.root);
+
+    verticalOrder(tree.root);
   }
 }

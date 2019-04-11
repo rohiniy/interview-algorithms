@@ -92,6 +92,6 @@ public class LongestSubstring {
   }
 
   public static void main(String args[]) {
-    System.out.println(lengthOfLongestSubstring("Aa!bd "));
+    System.out.println(lengthOfLongestSubstring("banana "));
   }
 }

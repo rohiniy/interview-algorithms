@@ -119,7 +119,7 @@ public class StringLongestSubstringNoRepetition {
 
   public static void main(String args[]) {
     //"aabaab!bb"
-    System.out.println(lengthOfLongestSubstring1("aab"));
-    System.out.println(lengthOfLongestSubstringHashSet("aab"));
+    System.out.println(lengthOfLongestSubstring1("banana"));
+    System.out.println(lengthOfLongestSubstringHashSet("banana"));
   }
 }

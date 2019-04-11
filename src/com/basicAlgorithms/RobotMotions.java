@@ -55,45 +55,48 @@ public class RobotMotions {
             y += 1;
           }
           else if (currentDirection == 2) {
+            // South so decrement y
             y -= 1;
           }
           else if (currentDirection == 1){
+            // East so increment x
             // change x
             x += 1;
           }
           else {
+            // West so decrement x
             x -= 1;
           }
           break;
 
         case 'R':
-//          if (currentDirection == 'N') {
+//          if (currentDirection == 'N') { 0
 //            // change y
-//            currentDirection = 'E';
+//            currentDirection = 'E'; 1
 //          }
-//          else if (currentDirection == 'S'){
-//            currentDirection = 'W';
+//          else if (currentDirection == 'S'){ 2
+//            currentDirection = 'W'; 3
 //          }
-//          else if (currentDirection == 'E') {
-//            currentDirection = 'S';
-//          }else {
-//            currentDirection = 'N';
+//          else if (currentDirection == 'E') { 1
+//            currentDirection = 'S'; 2
+//          }else { // W = 3
+//            currentDirection = 'N'; 0
 //          }
             currentDirection = (currentDirection + 1)%4;
           break;
 
         case 'L':
-//          if (currentDirection == 'N') {
+//          if (currentDirection == 'N') { 0
 //            // change y
-//            currentDirection = 'W';
+//            currentDirection = 'W'; 3
 //          }
-//          else if (currentDirection == 'S'){
-//            currentDirection = 'E';
+//          else if (currentDirection == 'S'){ 2
+//            currentDirection = 'E'; 1
 //          }
-//          else if (currentDirection == 'E') {
-//            currentDirection = 'N';
-//          }else {
-//            currentDirection = 'S';
+//          else if (currentDirection == 'E') { 1
+//            currentDirection = 'N'; 0
+//          }else { // W = 3
+//            currentDirection = 'S'; 2
 //          }
             currentDirection = (currentDirection +4 -1)%4;
           break;
