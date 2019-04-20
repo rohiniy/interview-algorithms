@@ -29,7 +29,7 @@ public class SubArrayWithMaxLenEqualsSumK {
     return maxLengthSubarray;
   }
   public static void main(String args[]) {
-    int nums[] = {3, 4, -3, 1};
+    int nums[] = {3, 4, -3, 4};
     int k = 7;
 
     System.out.println(maxSubArrayLen(nums, k));

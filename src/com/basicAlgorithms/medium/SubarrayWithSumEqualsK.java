@@ -26,6 +26,22 @@
  * ********************** if (sum(current pointer) - k == previous sum seen) then we have
  * subarray with sum = k, hence increment the counter
  *
+
+ *  * Better explanation
+ *  *  2 5 2 6 1 0   k = 7 result = 3
+ *  *  sum = 2+5=7 + 2= 9 + 6 = 15 + 1 = 16
+ *  *  sum-k = -5, 0, 9-7=2, 15-7 = 8, 16-7 = 9
+ *  *  sum-k = prevSum
+ *  *  sum - prevSum = k
+ *  *  result += 3
+ *  *
+ *  *  sum = k
+ *  *  sum - k = 0
+ *  *
+ *  *  Map(0, 1) (2, 1) (7, 1) (9, 1) (15, 1) (16, 1)
+ *  *
+ *
+ *
  */
 package com.basicAlgorithms.medium;
 
@@ -60,7 +76,7 @@ public class SubarrayWithSumEqualsK {
   }
 
   /**
-   * Logic behind it:
+   *
    *
    * @param nums
    * @param k

@@ -54,15 +54,25 @@ public class MinimumJumpsToReachEndInArray {
 
   /**
    * Try Greedy with O(n)
-   * @param A
+   *
+   * Logic: check 1st index say 2 -> get the maximum from the next 2 elements
+   * @param nums
    */
-  public static int jumpGreedy(int[] A) {
-    int jumps = 0, curEnd = 0, curFarthest = 0;
-    for (int i = 0; i < A.length - 1; i++) {
-      curFarthest = Math.max(curFarthest, i + A[i]);
-      if (i == curEnd) {
+  public static int jumpGreedy(int[] nums) {
+    int jumps = 0;
+    if (nums == null || nums.length <= 1) {
+      return jumps;
+    }
+
+    int maxReachIndex = 0;
+    int max = 0;
+
+    for (int i=0; i< nums.length-1; i++) {
+      max = Math.max(max, i+nums[i]); // maximum that you can reach
+      if (i == maxReachIndex) {
+        // check if i is still less than A.length -1 then will need more intermediate jumps
         jumps++;
-        curEnd = curFarthest;
+        maxReachIndex = max;
       }
     }
     return jumps;

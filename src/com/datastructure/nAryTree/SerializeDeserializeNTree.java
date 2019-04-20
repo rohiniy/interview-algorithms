@@ -17,7 +17,12 @@
  * Note:
  *
  *     N is in the range of [1, 1000]
- *     Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.
+ *     Do not use class member/global/static variables to store states.
+ *     Your serialize and deserialize algorithms should be stateless.
+ *
+ *
+ * SOLUTION:
+ * Root node val, children size, children node, children node's children size
  */
 package com.datastructure.nAryTree;
 
@@ -72,6 +77,9 @@ public class SerializeDeserializeNTree {
 
   }
 
+  // here test variable is not needed - it is just to show that normal int variable
+  // will have the value in recursive call as the previous value which was in the stack
+  // hence need to use value in the array or else use linked list and remove values from linked list
   private NAryTreeNode deserializeHelper(String[] data, int[] pos, int test) {
 
     NAryTreeNode root = new NAryTreeNode();
