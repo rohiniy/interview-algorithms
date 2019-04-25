@@ -2,6 +2,35 @@
  * Insertion sort is good for application like stream data is coming and you want it to be
  * added in sorted array - Like finding median of streaming data
  *
+ * Complexity:
+ * Worst Case: Reverse Sorted Array as for every compararison all them have to be moved and the insertion
+ * happens everytime at the 1st position
+ * WORST CASE(n^2)
+ *
+ * Array:   9 8 7 6
+ * Indices: 1 2 3 4
+ * j = 2: 1 comparison + 1 movement = 2(1)
+ *   = 3: 2 comparison + 2 movement = 2(2)
+ *   = 4: 3 comparison + 3 movement = 2(3)
+ *   .
+ *   .
+ *   2(1) + 2(2) + 2(3) ... + 2(n-1)
+ *   2 * (n-1) (n)/2 = n^2
+ *
+ *
+ * TIME COMPLEXITY:
+ * BEST CASE: O(n): Already sorted list
+ * WORST CASE: O(n^2): Reverse sorted list
+ * AVERAGE CASE: O(n^2)
+ *
+ * SPACE COMPLEXITY:
+ * O(1)
+ *
+ * Can we improve it?
+ * 1. We can apply binary search to search the position of element but then will need O(n) for movement
+ * 2. We can use Linked list to have O(1) for movement but, then we will need to do linear search
+ *
+ * Hence CANNOT IMPROVE THE PERFORMANCE
  */
 package com.basicAlgorithms.sorting;
 

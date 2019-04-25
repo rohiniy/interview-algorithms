@@ -18,49 +18,49 @@ public class Driver {
       // Parking
       System.out.println("Parking Medium Handicapped cars");
       for (int i = 0; i < 6; i++) {
-        parkingLot.park(new Car(Vehicle.VehicleType.HANDICAPPED));
+        parkingLot.park(new Car(VehicleType.HANDICAPPED));
       }
 
       System.out.println();
 
       System.out.println("Parking Large regular trucks");
       for (int j = 0; j < 8; j++) {
-        parkingLot.park(new Truck(Vehicle.VehicleType.REGULAR));
+        parkingLot.park(new Truck(VehicleType.REGULAR));
       }
 
       System.out.println();
 
       System.out.println("Parking Medium Regular cars");
       for(int k = 0; k < 3; k++) {
-        parkingLot.park(new Car(Vehicle.VehicleType.REGULAR));
+        parkingLot.park(new Car(VehicleType.REGULAR));
       }
 
       System.out.println();
 
       System.out.println("Parking Large Handicapped truck");
-      parkingLot.park(new Truck(Vehicle.VehicleType.HANDICAPPED));
+      parkingLot.park(new Truck(VehicleType.HANDICAPPED));
 
       System.out.println();
 
       System.out.println("Parking Large Regular truck");
-      parkingLot.park(new Truck(Vehicle.VehicleType.REGULAR));
+      parkingLot.park(new Truck(VehicleType.REGULAR));
 
       System.out.println();
 
       System.out.println("Parking Large Handicapped truck");
-      parkingLot.park(new Truck(Vehicle.VehicleType.HANDICAPPED));
+      parkingLot.park(new Truck(VehicleType.HANDICAPPED));
 
       System.out.println();
 
       System.out.println("Parking Small Regular bike");
       for(int m = 0; m < 3; m++) {
-        parkingLot.park(new Bike(Vehicle.VehicleType.REGULAR));
+        parkingLot.park(new Bike(VehicleType.REGULAR));
       }
 
       System.out.println();
 
       System.out.println("Parking Medium regular car");
-      parkingLot.park(new Car(Vehicle.VehicleType.REGULAR));
+      parkingLot.park(new Car(VehicleType.REGULAR));
 
       System.out.println();
 

@@ -1,4 +1,5 @@
 package com.basicAlgorithms.sorting;
+import java.util.*;
 
 public class QuickSort {
   public static void quickSort(int arr[], int l, int r) {
@@ -15,6 +16,11 @@ public class QuickSort {
 
   private static int partition(int arr[], int l, int r) {
 
+    // better to take a random pivot
+    Random random = new Random();
+    int randIndex = random.nextInt(r-l+1);
+    int pivorIndex = randIndex + l;
+    swap(arr, pivorIndex, r);
     int pivot = arr[r];
     int i = l-1;
 
@@ -42,7 +48,7 @@ public class QuickSort {
     quickSort(arr, 0, arr.length-1);
 
     for (int i=0; i< arr.length;i++) {
-      System.out.println(arr[i]);
+      System.out.print(arr[i] + " ");
     }
   }
 }

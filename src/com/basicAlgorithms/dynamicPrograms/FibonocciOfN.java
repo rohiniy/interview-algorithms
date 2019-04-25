@@ -50,6 +50,7 @@ public class FibonocciOfN {
     else {
       result = fibonacciHelper(n-1, mem) + fibonacciHelper(n-2, mem);
     }
+    mem[n] = result;
     return result;
   }
 

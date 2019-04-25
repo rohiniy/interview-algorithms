@@ -53,61 +53,57 @@ public class KthLargestElement {
 
   }
 
-  public void swap(int a, int b, int nums[]) {
-    int tmp = nums[a];
-    nums[a] = nums[b];
-    nums[b] = tmp;
+
+  ////////////////////////////  QUICK SORT //////////////////////////////////////
+
+  private void swap(int [] nums, int i, int j) {
+    int temp = nums[i];
+    nums[i] = nums[j];
+    nums[j] = temp;
   }
 
 
-  public int partition(int left, int right, int pivot_index, int nums[]) {
-    int pivot = nums[pivot_index];
-    // 1. move pivot to end
-    swap(pivot_index, right, nums);
-    int store_index = left;
+  private int partition(int[] nums, int l, int r) {
+    Random random = new Random();
+    int pivotIndex = l + random.nextInt(r-l);
+    int pivot = nums[pivotIndex];
+    swap(nums, pivotIndex, r);
+    int sortedIndex = l-1;
 
-    // 2. move all smaller elements to the left
-    for (int i = left; i <= right; i++) {
+    for (int i=l; i<r; i++) {
       if (nums[i] < pivot) {
-        swap(store_index, i, nums);
-        store_index++;
+        sortedIndex++;
+        swap(nums, sortedIndex, i);
       }
     }
-
-    // 3. move pivot to its final place
-    swap(store_index, right, nums);
-
-    return store_index;
+    // put pivot in correct position
+    swap(nums, sortedIndex+1, r);
+    return sortedIndex+1;
   }
 
-  public int quickselect(int left, int right, int k_smallest, int[] nums) {
-    /*
-    Returns the k-th smallest element of list within left..right.
-    */
+  public int quickSelect(int[] nums, int l, int r, int k) {
+    if(l == r) {
+      return nums[l];
+    }
+    int correctElementPosition = partition(nums, l, r);
 
-    if (left == right) // If the list contains only one element,
-      return nums[left];  // return that element
-
-    // select a random pivot_index
-    Random random_num = new Random();
-    int pivot_index = left + random_num.nextInt(right - left);
-
-    pivot_index = partition(left, right, pivot_index, nums);
-
-    // the pivot is on (N - k)th smallest position
-    if (k_smallest == pivot_index)
-      return nums[k_smallest];
-      // go left side
-    else if (k_smallest < pivot_index)
-      return quickselect(left, pivot_index - 1, k_smallest, nums);
-    // go right side
-    return quickselect(pivot_index + 1, right, k_smallest, nums);
+    if (correctElementPosition == k-1) {
+      return nums[correctElementPosition];
+    }
+    else if (correctElementPosition > k-1) {
+      // check in left subarray
+      return quickSelect(nums, l, correctElementPosition-1, k);
+    }
+    else {
+      return quickSelect(nums, correctElementPosition+1, r, k);
+    }
   }
 
   public int findKthLargest(int[] nums, int k) {
-    int size = nums.length;
-    // kth largest is (N - k)th smallest
-    return quickselect(0, size - 1, size - k, nums);
+    int n = nums.length;
+
+    // kth largest is kth smallest element
+    return quickSelect(nums, 0, n-1, n-k+1);
   }
 
 }

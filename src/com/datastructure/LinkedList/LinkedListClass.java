@@ -234,17 +234,15 @@ public class LinkedListClass {
     // at the end once prev.next ==null we will get the last element which is our head as prev, return that head
     nodeNext.next = node;
 
-    // propagate the head from the end to the 1st recusrsive call
+    // propagate the head from the end to the 1st recursive call
     return prev;
   }
 
   public ListNode reverseListIterative(ListNode head) {
-    if (head == null) {
-      return null;
-    }
-    if (head.next == null) {
+    if (head == null || head.next ==null) {
       return head;
     }
+
     ListNode curr = head;
     ListNode prev = null;
     ListNode nextP = null;

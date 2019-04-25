@@ -4,7 +4,7 @@ import java.util.*;
 
 // class that will have multiple ParkingSpaces
 public class ParkingLot {
-  private HashMap<Vehicle.VehicleSize, HashMap<Vehicle.VehicleType,
+  private HashMap<VehicleSize, HashMap<VehicleType,
       ArrayList<ParkingSpace>>> parkingAvailableBySize = new HashMap<>();
 
   // HASHMAP STRUCTURE
@@ -12,8 +12,8 @@ public class ParkingLot {
   // (MEDIUM, (R, H))
   // (LARGE, (R, H))
 
-  final private Vehicle.VehicleType[] vehicleTypes = Vehicle.VehicleType.values();
-  final private Vehicle.VehicleSize[] vehicleSizes = Vehicle.VehicleSize.values();
+  final private VehicleType[] vehicleTypes = VehicleType.values();
+  final private VehicleSize[] vehicleSizes = VehicleSize.values();
 
   public ParkingLot(int numberOfSmallRegularSpaces,
                     int numberOfMediumRegularSpaces,
@@ -38,11 +38,11 @@ public class ParkingLot {
         }
 
         if (parkingAvailableBySize.containsKey(vehicleSizes[sizeIndex])) {
-          HashMap<Vehicle.VehicleType, ArrayList<ParkingSpace>> previousTypeToSpaceMap = parkingAvailableBySize.get(vehicleSizes[sizeIndex]);
+          HashMap<VehicleType, ArrayList<ParkingSpace>> previousTypeToSpaceMap = parkingAvailableBySize.get(vehicleSizes[sizeIndex]);
           previousTypeToSpaceMap.put(vehicleTypes[vehicleTypeIndex], spaces);
 
         } else {
-          HashMap<Vehicle.VehicleType, ArrayList<ParkingSpace>> typeToSpaceMap = new HashMap();
+          HashMap<VehicleType, ArrayList<ParkingSpace>> typeToSpaceMap = new HashMap();
           typeToSpaceMap.put(vehicleTypes[vehicleTypeIndex], spaces);
           parkingAvailableBySize.put(vehicleSizes[sizeIndex], typeToSpaceMap);
         }
@@ -54,7 +54,7 @@ public class ParkingLot {
 
   }
 
-  public ParkingLot(HashMap<Vehicle.VehicleSize, HashMap<Vehicle.VehicleType, ArrayList<ParkingSpace>>> parkingAvaliableBySize) {
+  public ParkingLot(HashMap<VehicleSize, HashMap<VehicleType, ArrayList<ParkingSpace>>> parkingAvaliableBySize) {
     this.parkingAvailableBySize = parkingAvaliableBySize;
   }
 
@@ -70,39 +70,39 @@ public class ParkingLot {
   }
 
   private ParkingSpace tryToPark(Vehicle vehicle) {
-    Vehicle.VehicleSize size = vehicle.getSize();
-    Vehicle.VehicleType type = vehicle.getType();
+    VehicleSize size = vehicle.getSize();
+    VehicleType type = vehicle.getType();
 
 
     // LARGE PARKING SPOTS
-    if (size.equals(Vehicle.VehicleSize.LARGE)) {
+    if (size.equals(VehicleSize.LARGE)) {
       // if this is null, then no spaces are avaliable
       return findAvaliableSpaceWithType(type, parkingAvailableBySize.get(size));
 
 
       // MEDIUM PARKING SPOTS
-    } else if (size.equals(Vehicle.VehicleSize.MEDIUM)) {
+    } else if (size.equals(VehicleSize.MEDIUM)) {
       ParkingSpace mediumSpace = findAvaliableSpaceWithType(type, parkingAvailableBySize.get(size));
       if (mediumSpace != null) {
         return mediumSpace;
       } else {
         // Check large spaces --> if this is null, then no fitting spaces are avaliable
-        return findAvaliableSpaceWithType(type, parkingAvailableBySize.get(Vehicle.VehicleSize.LARGE));
+        return findAvaliableSpaceWithType(type, parkingAvailableBySize.get(VehicleSize.LARGE));
       }
 
       // SMALL PARKING SPOTS
-    } else if (size.equals(Vehicle.VehicleSize.SMALL)){
+    } else if (size.equals(VehicleSize.SMALL)){
       ParkingSpace smallSpace = findAvaliableSpaceWithType(type, parkingAvailableBySize.get(size));
       if (smallSpace != null) {
         return smallSpace;
       } else {
         // Check medium spaces
-        ParkingSpace mediumSpace = findAvaliableSpaceWithType(type, parkingAvailableBySize.get(Vehicle.VehicleSize.MEDIUM));
+        ParkingSpace mediumSpace = findAvaliableSpaceWithType(type, parkingAvailableBySize.get(VehicleSize.MEDIUM));
         if (mediumSpace != null) {
           return mediumSpace;
         } else {
           // Check large spaces --> if this is null, then no appropriate spaces are avaliable
-          return findAvaliableSpaceWithType(type, parkingAvailableBySize.get(Vehicle.VehicleSize.LARGE));
+          return findAvaliableSpaceWithType(type, parkingAvailableBySize.get(VehicleSize.LARGE));
         }
       }
 
@@ -112,10 +112,10 @@ public class ParkingLot {
   }
 
 
-  private ParkingSpace findAvaliableSpaceWithType(Vehicle.VehicleType vehicleType,
-                                                  HashMap<Vehicle.VehicleType, ArrayList<ParkingSpace>>
+  private ParkingSpace findAvaliableSpaceWithType(VehicleType vehicleType,
+                                                  HashMap<VehicleType, ArrayList<ParkingSpace>>
                                                       parkingAvailableByType) {
-    if (vehicleType.equals(Vehicle.VehicleType.HANDICAPPED)) {
+    if (vehicleType.equals(VehicleType.HANDICAPPED)) {
       // Check handicapped spaces first
       ArrayList<ParkingSpace> handicappedSpaces = parkingAvailableByType.get(vehicleType);
       ParkingSpace handicappedSpace = areSpacesTaken(handicappedSpaces);
@@ -123,12 +123,12 @@ public class ParkingLot {
         return handicappedSpace;
       } else {
         // Check regular spaces
-        ArrayList<ParkingSpace> regularSpaces = parkingAvailableByType.get(Vehicle.VehicleType.REGULAR);
+        ArrayList<ParkingSpace> regularSpaces = parkingAvailableByType.get(VehicleType.REGULAR);
         return areSpacesTaken(regularSpaces);
       }
     } else {
       // check regular spaces
-      ArrayList<ParkingSpace> regularSpaces = parkingAvailableByType.get(Vehicle.VehicleType.REGULAR);
+      ArrayList<ParkingSpace> regularSpaces = parkingAvailableByType.get(VehicleType.REGULAR);
       return areSpacesTaken(regularSpaces);
     }
   }
@@ -161,9 +161,9 @@ public class ParkingLot {
     return true;
   }
 
-  private int toStringHelper_AvaliableSpacesWithTypeAndSize(Vehicle.VehicleType vehicleType,
-                                                            Vehicle.VehicleSize vehicleSize) {
-    HashMap<Vehicle.VehicleType, ArrayList<ParkingSpace>> avaliableByTypeAndSize =
+  private int toStringHelper_AvaliableSpacesWithTypeAndSize(VehicleType vehicleType,
+                                                            VehicleSize vehicleSize) {
+    HashMap<VehicleType, ArrayList<ParkingSpace>> avaliableByTypeAndSize =
         parkingAvailableBySize.get(vehicleSize);
     ArrayList<ParkingSpace> exactSpaces = avaliableByTypeAndSize.get(vehicleType);
     int count = 0;

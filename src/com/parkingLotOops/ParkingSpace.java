@@ -10,6 +10,7 @@ public class ParkingSpace implements Space{
     this.vehicleType = vehicleType;
   }
 
+  // space interface
   @Override
   public boolean getIsTaken() {
     return isTaken;
@@ -20,12 +21,10 @@ public class ParkingSpace implements Space{
     this.isTaken = true;
   }
 
-  @Override
+
   public VehicleSize getSize() {
     return this.vehicleSize;
   }
-
-  @Override
   public VehicleType getType() {
     return this.vehicleType;
   }

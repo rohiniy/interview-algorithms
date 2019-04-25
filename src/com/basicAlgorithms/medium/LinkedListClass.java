@@ -1,5 +1,5 @@
 /**
- * Add Two Numbers
+ * --------------------------Add Two Numbers--------------------------------------
  *
  * You are given two non-empty linked lists representing two non-negative integers.
  * The digits are stored in reverse order and each of their nodes contain a single digit.
@@ -13,7 +13,7 @@
  * Output: 7 -> 0 -> 8
  * Explanation: 342 + 465 = 807.
  *
- * ---------------------------------------------PROBLEM - 2-------------------------------------
+ * ---------------------------------------------PROBLEM - 2 Remove nth node from end---------------------
  * Given a linked list, remove the n-th node from the end of list and return its head.
  *
  * Example:
@@ -95,62 +95,34 @@ import java.util.PriorityQueue;
 public class LinkedListClass {
   ListNode head;
 
+  /**
+   * Function to add 2 lists in straigt order
+   * Hence, need to reverse the list and then add the two lists
+   * @param l1
+   * @param l2
+   * @return
+   */
   public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-    ListNode resultHead = null;
+    // reverse the list and then add the 2 lists
+    ListNode l1Head = reverseList(l1);
+    ListNode l2Head = reverseList(l2);
     ListNode resultPointer = null;
-    ListNode head1 = l1;
-    ListNode head2 = l2;
-    boolean mostSignificant = false;
-
-
-    // both are now the same length
+    ListNode resultHead = null;
     int carry = 0;
-    while (l1 != null && l2 != null) {
-      // need to check if we are adding the last node
-      // and that has sum > 9 then need to create another node in the result
-      int value = l1.val + l2.val + carry;
-      mostSignificant = (l1.next == null && l2.next == null) ? true : false;
+    ListNode l1P = l1Head;
+    ListNode l2P = l2Head;
 
-      if (value > 9) {
-        // carry needs to be added
-        value = value - 10;
-        carry = 1;
-      }
-      else {
-        carry = 0;
-      }
-      if (resultHead == null) {
-        resultHead = new ListNode(value);
-        resultPointer = resultHead;
-      }
-      else {
-        ListNode node = new ListNode(value);
-        resultPointer.next = node;
-        resultPointer = resultPointer.next;
-      }
-      if (mostSignificant && carry == 1) {
-        // create another node if carry is 1
-        ListNode lastNode = new ListNode(1);
-        resultPointer.next = lastNode;
-        resultPointer = resultPointer.next;
-      }
-      l1= l1.next;
-      l2 = l2.next;
-    }
 
-    // if there is any of the list remaining
-    while (l1 != null) {
-      mostSignificant = l1.next == null ? true : false;
+    while (l1P != null || l2P != null) {
+      int value = carry;
+      if (l1P != null)
+        value += l1P.val;
 
-      int value = l1.val + carry;
-      if (value > 9) {
-        // carry needs to be added
-        value = value - 10;
-        carry = 1;
-      }
-      else {
-        carry = 0;
-      }
+      if (l2P != null)
+        value += l2P.val;
+
+      carry = value/10;
+      value = value%10;
 
       if (resultHead == null) {
         resultHead = new ListNode(value);
@@ -161,51 +133,48 @@ public class LinkedListClass {
         resultPointer.next = node;
         resultPointer = resultPointer.next;
       }
-      if (mostSignificant && carry == 1) {
-        // create another node if carry is 1
-        ListNode lastNode = new ListNode(1);
-        resultPointer.next = lastNode;
-        resultPointer = resultPointer.next;
-      }
-      l1 = l1.next;
+      l1P =  (l1P != null) ? l1P.next : null;
+      l2P =  (l2P != null) ? l2P.next : null;
     }
 
-    // if there is any of the list remaining
-    while (l2 != null) {
-      mostSignificant = l2.next == null ? true : false;
+    if (carry != 0) {
+      ListNode node = new ListNode(carry);
+      resultPointer.next = node;
 
-      int value = l2.val + carry;
-      if (value > 9) {
-        // carry needs to be added
-        value = value - 10;
-        carry = 1;
-      }
-      else {
-        carry = 0;
-      }
-
-      if (resultHead == null) {
-        resultHead = new ListNode(value);
-        resultPointer = resultHead;
-      }
-      else {
-        ListNode node = new ListNode(value);
-        resultPointer.next = node;
-        resultPointer = resultPointer.next;
-      }
-      if (mostSignificant && carry == 1) {
-        // create another node if carry is 1
-        ListNode lastNode = new ListNode(1);
-        resultPointer.next = lastNode;
-        resultPointer = resultPointer.next;
-      }
-      l2 = l2.next;
     }
 
-    return resultHead;
+    return reverseList(resultHead);
+
+  }
+
+  private static ListNode reverseList(ListNode head) {
+    ListNode curr = head;
+    ListNode prev = null;
+    ListNode nextP = null;
+
+    if (head == null || head.next == null) {
+      return head;
+    }
+
+    while (curr != null) {
+      nextP = curr.next;
+      curr.next = prev;
+
+      prev = curr;
+      curr = nextP;
+    }
+
+    head = prev;
+    return head;
   }
 
 
+  /**
+   * Add 2 linked list which are numbers in reverse order
+   * @param l1
+   * @param l2
+   * @return
+   */
   public static ListNode addTwoNumbersPrecise(ListNode l1, ListNode l2) {
     ListNode p1= l1;
     ListNode p2 = l2;
@@ -563,6 +532,7 @@ public class LinkedListClass {
     list2.insert(4);
 
     addTwoNumbersPrecise(list1.head, list2.head);
+    addTwoNumbers(list1.head, list2.head);
 
 
     LinkedListClass l1 = new LinkedListClass();
