@@ -56,7 +56,7 @@ public class KthSmallestElement {
 
   public int findKthSmallest(int[] nums, int k) {
     int size = nums.length;
-    // kth largest is (N - k)th smallest
+
     return quickselect(0, size - 1, k, nums);
   }
 

@@ -134,7 +134,13 @@ class Solution {
     return false;
   }
 
+
+
   public String solution (String S) {
+    StringBuilder result = new StringBuilder();
+    if (S == null || S.length() == 0) {
+      return result.toString();
+    }
     S = S.toLowerCase().replaceAll(" ", "");
     Map<Character, Integer> map = new HashMap<>();
 
@@ -147,66 +153,118 @@ class Solution {
 
     // map <a 2, e 3>
     // List <obj>
-    List<Map.Entry<Character, Integer>> list = new ArrayList<>();
+//    List<Map.Entry<Character, Integer>> list = new ArrayList<>();
+//    for (Map.Entry<Character, Integer> entry: map.entrySet()) {
+//      list.add(entry);
+//    }
+//    Collections.sort(list, new Comparator<Map.Entry<Character, Integer>>() {
+//      @Override
+//      public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
+//        if (o2.getValue() > o1.getValue()) {
+//          return 1;
+//        }
+//        else if (o2.getValue() < o1.getValue()) {
+//          return -1;
+//        }
+//        else {
+//          // equal
+//          return o1.getKey().compareTo(o2.getKey());
+//        }
+//      }
+//    });
+//    int maxCount = 0;
+//    StringBuilder result = new StringBuilder();
+//    if (list.size() > 0) {
+//      Map.Entry<Character, Integer> entry = list.get(0);
+//      maxCount = entry.getValue();
+//
+//      if (list.size() > 1 && list.get(1).getValue() != maxCount) {
+//        // ony 1 max entry
+//        result.append(entry.getKey() + " appears " + maxCount);
+//        if (maxCount > 1) {
+//          result.append(" times");
+//        }
+//        else {
+//          result.append(" time");
+//        }
+//        return result.toString();
+//      }
+//
+//      int countOfSameFreq = 1;
+//      for (int i=1; i< list.size(); i++) {
+//        if (list.get(i).getValue() == maxCount) {
+//          countOfSameFreq++;
+//        }
+//      }
+//
+//      for (int i=0; i< countOfSameFreq; i++) {
+//        int count = list.get(i).getValue();
+//        result.append(list.get(i).getKey() + " appears " + list.get(i).getValue());
+//        if (count > 1) {
+//          result.append(" times");
+//        }
+//        else {
+//          result.append(" time");
+//        }
+//        if (i != countOfSameFreq-1) {
+//          result.append("\n");
+//        }
+//      }
+//
+//    }
+
+
+    int maxFreq = 0;
+    int countOfMaxFreq = 0;
+    Character charWithMaxCount = null;
     for (Map.Entry<Character, Integer> entry: map.entrySet()) {
-      list.add(entry);
-    }
-    Collections.sort(list, new Comparator<Map.Entry<Character, Integer>>() {
-      @Override
-      public int compare(Map.Entry<Character, Integer> o1, Map.Entry<Character, Integer> o2) {
-        if (o2.getValue() > o1.getValue()) {
-          return 1;
-        }
-        else if (o2.getValue() < o1.getValue()) {
-          return -1;
-        }
-        else {
-          // equal
-          return o1.getKey().compareTo(o2.getKey());
-        }
+      if (entry.getValue() > maxFreq) {
+        maxFreq = entry.getValue();
+        countOfMaxFreq++;
+        charWithMaxCount = entry.getKey();
       }
-    });
+    }
 
-    int maxCount = 0;
-    StringBuilder result = new StringBuilder();
-    if (list.size() > 0) {
-      Map.Entry<Character, Integer> entry = list.get(0);
-      maxCount = entry.getValue();
-
-      if (list.size() > 1 && list.get(1).getValue() != maxCount) {
-        // ony 1 max entry
-        result.append(entry.getKey() + " appears " + maxCount);
-        if (maxCount > 1) {
+    // ony 1 max entry
+    if (countOfMaxFreq == 1) {
+      // then print the single element
+        result.append(charWithMaxCount + " appears " + maxFreq);
+        if (maxFreq > 1) {
           result.append(" times");
         }
         else {
           result.append(" time");
         }
         return result.toString();
+    }
+
+    char vowels[] = {'a', 'e', 'i', 'o', 'u'};
+
+    int k = 0;
+    // multiple max entries
+    for(int i=0; i < vowels.length && k < countOfMaxFreq; i++) {
+      int count = map.getOrDefault(vowels[i], 0);
+      if (count != maxFreq) {
+        continue;
       }
 
-      int countOfSameFreq = 1;
-      for (int i=1; i< list.size(); i++) {
-        if (list.get(i).getValue() == maxCount) {
-          countOfSameFreq++;
-        }
+      result.append(vowels[i] + " appears " + maxFreq);
+      if (maxFreq > 1) {
+        result.append(" times");
+      }
+      else {
+        result.append(" time");
       }
 
-      for (int i=0; i< countOfSameFreq; i++) {
-        int count = list.get(i).getValue();
-        result.append(list.get(i).getKey() + " appears " + list.get(i).getValue());
-        if (count > 1) {
-          result.append(" times");
-        }
-        else {
-          result.append(" time");
-        }
-        if (i != countOfSameFreq-1) {
-          result.append("\n");
-        }
+      if (k < countOfMaxFreq-1) {
+        result.append("\n");
       }
+
+      // increment the chars with maxCount count
+      k++;
 
     }
+
     return result.toString();
   }
 

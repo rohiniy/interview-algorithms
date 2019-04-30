@@ -18,6 +18,10 @@
  *
  * Input: nums = [4,5,6,7,0,1,2], target = 3
  * Output: -1
+ *
+ *
+ * Solution:
+ *
  */
 package com.basicAlgorithms.medium;
 
@@ -66,7 +70,8 @@ public class ArrayBinarySearchRotatedSorted {
   }
 
   private static int rotateIndex(int[] nums) {
-    // search the rotateIndex - smallest number in the array
+    // search the rotateIndex : smallest number in the array
+    //[4,5,6,0,1,2, 3]).
     int lo = 0;
     int hi = nums.length-1;
     if (nums[lo] < nums[hi]) {

@@ -1,5 +1,6 @@
 /**
- * Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.
+ * Find the kth largest element in an unsorted array. Note that it is the kth largest element in the
+ * sorted order, not the kth distinct element.
  *
  * Example 1:
  *
@@ -102,7 +103,7 @@ public class KthLargestElement {
   public int findKthLargest(int[] nums, int k) {
     int n = nums.length;
 
-    // kth largest is kth smallest element
+    // kth largest is (N - k)th smallest
     return quickSelect(nums, 0, n-1, n-k+1);
   }
 

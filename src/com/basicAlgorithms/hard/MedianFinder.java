@@ -2,7 +2,8 @@
  *  Find Median from Data Stream
  *
  *  Median is the middle value in an ordered integer queue.
- *  If the size of the queue is even, there is no middle value. So the median is the mean of the two middle value.
+ *  If the size of the queue is even, there is no middle value.
+ *  So the median is the mean of the two middle value.
  *
  * For example,
  * [2,3,4], the median is 3
@@ -41,7 +42,7 @@
  * 3. BEST - Use 2 heaps
  * Have one - MAXHEAP which will store first half of sorted array so root = max of 1st half
  * Have another MINHEAP which will store 2nd half of sorted array so root - min(2nd half of array)
- * Keep size of the 1st heap more than 1 than minHEap, so that median is = maxHEap(root)
+ * Keep size of the 1st heap more than 1 than minHEap, so that median is = maxHeap(root)
  * otherwise (root(maxHeap) + root(minHeap))/2
  *
  * Add num     FindMedian
@@ -117,12 +118,7 @@ class MedianFinderByHeaps {
   public MedianFinderByHeaps() {
 
     // need to have max at the root from 1st half of elements
-    maxHeap = new PriorityQueue<>(new Comparator<Integer>() {
-      @Override
-      public int compare(Integer o1, Integer o2) {
-        return o2-o1;
-      }
-    });
+    maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 
     // need to have min at the root from 2nd half of elements
     minHeap = new PriorityQueue<>();
