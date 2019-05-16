@@ -49,8 +49,7 @@ public class SerializeDeserializeBinaryTree {
     }
     else {
       // recursive preorder call :  Root, left, right
-      str.append(root.val);
-      str.append(",");
+      str.append(root.val + ",");
       serializeHelper(root.left, str);
       serializeHelper(root.right, str);
     }

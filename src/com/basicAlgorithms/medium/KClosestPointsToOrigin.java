@@ -62,9 +62,9 @@ public class KClosestPointsToOrigin {
       dist[i] = getDistance(points[i], origin);
     }
 
-    int kSmallDistanceInex = quickSelect(dist, 0, n-1, K);
+    int kSmallDistanceIndex = quickSelect(dist, 0, n-1, K);
 
-    double kthSmallestDistance = dist[kSmallDistanceInex];
+    double kthSmallestDistance = dist[kSmallDistanceIndex];
 
     int j = 0;
     for (int i=0;i<n; i++) {
@@ -135,8 +135,10 @@ public class KClosestPointsToOrigin {
     int[][] arr = {{2,2},{2,2},{2,2},{2,2},{2,2},{2,2},{1,1}};
 
 
+    // Sorting method
     int [][] result = obj.kClosest(arr, 1);
 
+    // By Quick Select
     result = obj.kClosestQuickSort(arr, 1);
 
 

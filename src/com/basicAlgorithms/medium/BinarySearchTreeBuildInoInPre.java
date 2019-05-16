@@ -13,9 +13,7 @@ public class BinarySearchTreeBuildInoInPre {
                             int[] inOrder, int inS, int inE,
                             HashMap<Integer, Integer> inorderMap) {
     if (preS > preE) {return null;}
-    if (inS > inE) {
-      return null;
-    }
+    if (inS > inE) { return null; }
 
     // root is 1st
     TreeNode root = new TreeNode(preorder[preS]);

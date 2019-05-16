@@ -1,5 +1,4 @@
 package com.datastructure;
-import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.util.*;
 
 public class Graph {

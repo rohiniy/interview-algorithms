@@ -88,8 +88,8 @@ public class ArraySearchIndexRangeInSorted {
   }
 
   public static void main(String args[]) {
-    int nums[] = {1};
-    int target = 1;
+    int nums[] = {1, 2, 2,2, 3, 3, 4, 5, 7, 8, 8};
+    int target = 7;
     ArraySearchIndexRangeInSorted obj = new ArraySearchIndexRangeInSorted();
     int result[] = obj.searchRange(nums, target);
 

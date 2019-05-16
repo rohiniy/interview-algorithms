@@ -48,7 +48,7 @@ public class ArrayMostFreqKElements {
       int count = entry.getValue();
       int number = entry.getKey();
       if (buckets[count] == null) {
-        buckets[count] = new ArrayList<Integer>();
+        buckets[count] = new ArrayList<>();
       }
       buckets[count].add(number);
     }

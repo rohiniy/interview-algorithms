@@ -5,6 +5,7 @@
  *
  *        4 5 6 7 2 3 1
  *
+ * Print the bottom level first
  *
  * SOLUTION can use queue and add level order from right
  * Then just reversing the order will give you that

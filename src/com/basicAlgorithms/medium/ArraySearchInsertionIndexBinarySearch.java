@@ -1,5 +1,6 @@
 /**
- * Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+ * Given a sorted array and a target value, return the index if the target is found. If not,
+ * return the index where it would be if it were inserted in order.
  *
  * You may assume no duplicates in the array.
  *
@@ -21,13 +22,14 @@
  * Output: 0
  *
  * SOLUTION:
- * 1. We can do binary search and for every midpoint we can check if element is between midpoint -1 midpoint
+ * 1. We can do binary search and for every midpoint we can check if element is between midpoint -1
+ * midpoint
  * or midpoint and midpoint+1
  */
 package com.basicAlgorithms.medium;
 
 public class ArraySearchInsertionIndexBinarySearch {
-  public int searchInsert(int[] nums, int target) {
+  public static int searchInsert(int[] nums, int target) {
     // binary search to also find the insertion point
     if (nums == null) {
       return -1;
@@ -45,8 +47,8 @@ public class ArraySearchInsertionIndexBinarySearch {
     return insertionIndex(nums, 0, nums.length-1, target);
   }
 
-  private int insertionIndex(int nums[], int start, int end, int target) {
-    int midpoint = (end - start)/2 + start;
+  private static int insertionIndex(int nums[], int start, int end, int target) {
+    int midpoint = (start+ end)/2;
     if (nums[midpoint] == target) {
       return midpoint;
     }
@@ -65,5 +67,10 @@ public class ArraySearchInsertionIndexBinarySearch {
       }
       return insertionIndex(nums,midpoint + 1, end, target);
     }
+  }
+
+  public static void main(String[] args) {
+    int index = searchInsert(new int[]{1,3,5,6, 10, 100}, 54);
+    System.out.println(index);
   }
 }

@@ -1,3 +1,11 @@
+/**
+ * Get the character count in the order of the string input
+ * Also count spaces
+ *
+ *
+ * SOLUTION:
+ * You can use LinkedHashMap<Character, Integer>
+ */
 package com.basicAlgorithms.arrays;
 
 import java.util.*;
@@ -50,8 +58,27 @@ public class CharCount {
     return result;
   }
 
+  static void CountLettersByLinkedHashMap(String input) {
+    LinkedHashMap<Character, Integer> map = new LinkedHashMap<>();
+
+    for(int i=0;i<input.length(); i++) {
+      char c = input.charAt(i);
+      if (Character.isLetter(c)) {
+        c = Character.toLowerCase(c);
+      }
+      int freq = map.getOrDefault(c, 0);
+      map.put(c, freq+1);
+    }
+
+    for (Map.Entry entry: map.entrySet()) {
+      System.out.print("'"+ entry.getKey() + "'" + ":" + entry.getValue() + " ");
+    }
+  }
+
   public static void main(String args[]) {
-    String result = CountLetters("The Academy");
+    String input = "Tthe Academy";
+    String result = CountLetters(input);
     System.out.println(result);
+    CountLettersByLinkedHashMap(input);
   }
 }

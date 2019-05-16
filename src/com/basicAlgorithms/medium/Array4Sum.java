@@ -46,8 +46,8 @@ public class Array4Sum {
         // increment i as it is less
         continue;
       }
-      if (i > 0 && nums[i] != nums[i-1]) {
-        // if same then
+      if (i > 0 && nums[i] == nums[i-1]) {
+        // if same then do not compare
         continue;
       }
         // x + y + z + k = target
@@ -164,7 +164,7 @@ public class Array4Sum {
 
 
   public static void main(String args[]) {
-    int nums[] = {1,-2,-5,-4,-3,3,3,5};
+    int nums[] = {1,1,-2,-5,-5,-4,-3,3,3,5};
 //
 //[1,-2,-5,-4,-3,3,3,5]
 //    -11

@@ -83,7 +83,8 @@
  * 6. go to right: cur = curr.right
  *
  * --------------------PROBLEM - Binary Tree Zigzag Level Order Traversal
- * Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left to right, then right to left for the next level and alternate between).
+ * Given a binary tree, return the zigzag level order traversal of its nodes' values. (ie, from left
+ * to right, then right to left for the next level and alternate between).
  *
  * For example:
  * Given binary tree [3,9,20,null,null,15,7],
@@ -414,7 +415,7 @@ public class BinaryTree {
       return;
     }
     List<Integer> sublist;
-    if(level < result.size()){
+    if(level < result.size()){ // 0 < 0
       sublist = result.get(level);
     } else {
       sublist = new ArrayList<>();
@@ -500,12 +501,14 @@ public class BinaryTree {
     System.out.println("Level order::");
     System.out.println(tree1.levelOrderList(tree1.root));
 
-    System.out.println("Zig zag level order traversal::");
+    System.out.println("Zig zag level order traversal1::");
+    System.out.println(tree1.zigzagLevelOrder(tree1.root));
+
+    System.out.println("Zig zag level order traversal2::");
     System.out.println(tree1.zigzagLevelOrderPrecise(tree1.root));
 
-    System.out.println("Left nodes summation = "+ tree1.sumOfLeftNodes(tree1.root));
-
-
+    System.out.println("Left nodes summation1 = "+ tree1.sumOfLeftLeaves(tree1.root));
+    System.out.println("Left nodes summation2 = "+ tree1.sumOfLeftNodes(tree1.root));
 
     tree1.deleteTree(tree1.root);
     tree1.root = null;

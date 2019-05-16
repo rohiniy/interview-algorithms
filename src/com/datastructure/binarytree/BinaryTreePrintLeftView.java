@@ -45,35 +45,38 @@ public class BinaryTreePrintLeftView {
   }
 
 
-  public static List<Integer> levelOrderLeftView(TreeNode root) {
+  public static List<Integer> levelOrderLeftView(TreeNode root, Map<Integer, Integer> map) {
     List<Integer> result = new LinkedList<>();
     if (root == null) {
       return result;
     }
 
+    int level = 0;
     // Queue
     Queue<TreeNode> queue = new LinkedList<>();
     queue.add(root);
     while (!queue.isEmpty()) {
-      TreeNode node1 = queue.peek();
-      result.add(node1.val);
-
       int size = queue.size();
 
-      int i = size;
-      while (i > 0) {
+      while (size > 0) {
         TreeNode node = queue.poll();
 
+        map.put(level, node.val);
         if (node.right != null) {
           queue.add(node.right);
         }
-
         if (node.left != null) {
           queue.add(node.left);
         }
-        i--;
+        size--;
       }
 
+      level++;
+
+    }
+
+    for (int i=0; i<map.size(); i++) {
+      result.add(map.get(i));
     }
     return result;
   }
@@ -102,7 +105,12 @@ public class BinaryTreePrintLeftView {
 
     getLeftViewTree(tree.root);
 
-    System.out.println(levelOrderLeftView(tree.root));
+    Map<Integer, Integer> map = new HashMap<>();
+
+    System.out.println("Level Order Traversal::");
+    System.out.println(BinaryTreeLevelOrderTraversal.levelOrder(tree.root));
+
+    System.out.println(levelOrderLeftView(tree.root, map));
   }
 
 }

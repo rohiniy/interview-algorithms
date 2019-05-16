@@ -1,4 +1,6 @@
 /**
+ *
+ *
  * Given an array of size n, find the majority element. The majority element is the element that
  * appears more than ⌊ n/2 ⌋ times.
  *
@@ -12,6 +14,9 @@
  *
  * Input: [2,2,1,1,1,2,2]
  * Output: 2
+ *
+ *
+ *
  *
  * SOLUTION:
  *
@@ -37,7 +42,10 @@
  * 3.  Return a[maj_index]
  *
  *
- * ////////////// Problem 2 - Medium
+ * ////////////// Problem 2 - Medium  -  MAJORITY ELEMENT II
+ *
+ * https://leetcode.com/problems/majority-element-ii/
+ *
  * Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
  *
  * Note: The algorithm should run in linear time and in O(1) space.

@@ -44,10 +44,10 @@ public class ArrayBinarySearchRotatedSorted {
 
     if (target >= nums[0]) {
       // search in left array
-      return binarySearch(nums, 0, rotateIndex, target);
+      return binarySearch(nums, 0, rotateIndex-1, target);
     }
     else {
-      return binarySearch(nums, rotateIndex, nums.length-1, target);
+      return binarySearch(nums, rotateIndex+1, nums.length-1, target);
     }
   }
 
@@ -96,8 +96,8 @@ public class ArrayBinarySearchRotatedSorted {
   }
 
   public static void main(String args[]) {
-    int nums[] = {1, 3};
-    int target = 3;
+    int nums[] = {5, 6, 7, 1, 3, 4};
+    int target = 8;
     System.out.println(search(nums, target));
   }
 }

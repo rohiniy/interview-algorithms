@@ -31,7 +31,6 @@
  */
 package com.datastructure.binarytree;
 
-import java.util.Hashtable;
 
 public class DeepestNodeBinaryTree {
   public int deepestNode(TreeNode root) {

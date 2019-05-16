@@ -1,11 +1,17 @@
 /**
  * Given an undirected graph, return true if and only if it is bipartite.
  *
- * Recall that a graph is bipartite if we can split it's set of nodes into two independent subsets A and B such that every edge in the graph has one node in A and another node in B.
+ * Recall that a graph is bipartite if we can split it's set of nodes into two
+ * independent subsets A and B such that every edge in the graph has one node in A
+ * and another node in B.
  *
- * The graph is given in the following form: graph[i] is a list of indexes j for which the edge between nodes i and j exists.  Each node is an integer between 0 and graph.length - 1.  There are no self edges or parallel edges: graph[i] does not contain i, and it doesn't contain any element twice.
+ * The graph is given in the following form: graph[i] is a list of indexes j
+ * for which the edge between nodes i and j exists.  Each node is an integer between
+ * 0 and graph.length - 1.  There are no self edges or parallel edges: graph[i] does not contain i,
+ * and it doesn't contain any element twice.
  *
  * Example 1:
+ * [0th vertex adjacent vertices, 1st vertex, 2nd vertex, 3rd vertex]
  * Input: [[1,3], [0,2], [1,3], [0,2]]
  * Output: true
  * Explanation:
@@ -62,9 +68,6 @@ public class IsBipartite {
   }
 
   private boolean isBipartiteHelper(int[][] graph, int src, int [] colorArr) {
-
-
-
     Queue<Integer> q = new LinkedList<>();
     q.add(src);
     colorArr[src] = 1;

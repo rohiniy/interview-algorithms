@@ -18,7 +18,7 @@
  * solution.shuffle();
  *
  * SOLUTION
- * reset() strore the original array
+ * reset() store the original array
  *
  * shuffle()
  */

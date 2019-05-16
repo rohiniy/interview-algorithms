@@ -1,5 +1,8 @@
 package com.datastructure.trie;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Trie {
   static final int ALPHABET_SIZE = 26;
   private TrieNode root;
@@ -8,7 +11,7 @@ public class Trie {
   // If the key is prefix of trie node,  
   // just marks leaf node 
   public void insert(String key) {
-    int i = 0;
+    int i;
     int length = key.length();
     int index;
 
@@ -29,7 +32,7 @@ public class Trie {
 
   public boolean search(String key) {
     TrieNode current = root;
-    int index = 0;
+    int index;
 
     for (int i=0; i< key.length(); i++) {
       index = key.charAt(i) - 'a';
@@ -43,6 +46,36 @@ public class Trie {
     return current != null && current.isEndOfWord;
   }
 
+  public List<String> autoComplete(String str) {
+    TrieNode current = root;
+    List<String> result = new ArrayList<>();
+    StringBuffer word = new StringBuffer();
+
+    for (int i= 0; i< str.length(); i++) {
+      int index = str.charAt(i) - 'a';
+      word.append(str.charAt(i));
+      if (current.children[index] == null) {
+        return result;
+      }
+      current = current.children[index];
+    }
+
+    traverseRec(word.toString(), current, result);
+    return result;
+  }
+
+  public List<String> traverseRec(String s, TrieNode current, List<String> result) {
+    if (current.isEndOfWord) {
+      result.add(s);
+    }
+    for (char i = 'a'; i< 'z'; i++) {
+      if (current.children[i-'a'] != null) {
+        traverseRec(s+i, current.children[i-'a'], result);
+      }
+    }
+
+    return result;
+  }
   public static void main(String args[]) {
     String keys[] = {"the", "a", "there", "answer", "any",
         "by", "bye", "their"};
@@ -58,6 +91,10 @@ public class Trie {
 
     boolean isPresent = trie.search("ther");
     System.out.println(isPresent);
+
+
+    System.out.println("Autocomplete::");
+    System.out.println(trie.autoComplete("the"));
 
   }
 }

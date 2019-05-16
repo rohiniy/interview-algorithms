@@ -86,7 +86,7 @@ public class StringSortCharByFrequency {
   }
 
   public static void main(String args[]) {
-    String str = "tree";
+    String str = "trree";
     System.out.println(frequencySort(str));
   }
 }

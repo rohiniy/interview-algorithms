@@ -58,9 +58,10 @@ public class BinaryTreePrintBottomView {
     for (int i = smallestHorizontalDistance; i < (smallestHorizontalDistance + map.size()); i++) {
       Map<Integer, Integer> m = map.get(i);
       for (Map.Entry entry: m.entrySet()) {
-        System.out.println(entry.getKey());
+        System.out.print(entry.getKey() + " ");
       }
     }
+    System.out.println();
 
   }
   private static void printBottomViewHelper(TreeNode root, Map<Integer,
@@ -111,20 +112,22 @@ public class BinaryTreePrintBottomView {
 
   // <20 0> <8 -1> <22 -1> <>
 
-  private static int horizontalDistance(TreeNode root, int hLevel, Map<Integer, Integer> map, int smallestHLevel) {
+  private static int horizontalDistance(TreeNode root, int hLevel, Map<Integer, Integer> map,
+                                        int smallestHLevel) {
     if (root == null) {
       return smallestHLevel;
     }
     // preOrder traversal
-    map.put(hLevel, root .val);
-    smallestHLevel = smallestHLevel > hLevel ? hLevel : smallestHLevel;
-    smallestHLevel = horizontalDistance(root.left, hLevel -1, map, smallestHLevel);
+    map.put(hLevel, root .val); // 0 3 -1 8 -2 5
+    smallestHLevel = smallestHLevel > hLevel ? hLevel : smallestHLevel; // 0 -1 -2
+    smallestHLevel = horizontalDistance(root.left, hLevel -1, map, smallestHLevel);//5, -2, -1
     smallestHLevel = horizontalDistance(root.right, hLevel +1, map, smallestHLevel);
 
     return smallestHLevel;
   }
 
   public static void printBottomView1(TreeNode root) {
+    // hlevel, root.val
     Map<Integer, Integer> map = new HashMap<>();
     int smallestHLevel = horizontalDistance(root, 0, map, 0);
 
@@ -159,6 +162,12 @@ public class BinaryTreePrintBottomView {
     return list;
   }
 
+  /**
+   * Print the tree with same horizontal distance in one list
+   * starting from hDist = smallest from root and then group the same hDist nodes together
+   * @param root
+   * @return
+   */
   public static List<List<Integer>> verticalOrder(TreeNode root) {
     // left = -1, right = +1, root = 0
     // create a map with <horizontal level, Lis<TreeNode>>
@@ -201,12 +210,14 @@ public class BinaryTreePrintBottomView {
     tree.root.right.left = new TreeNode(6);
     tree.root.right.right = new TreeNode(7);
     tree.root.right.left.left = new TreeNode(9);
+    tree.root.right.left.right = new TreeNode(10);
 
     /**
      *         1
-     *     2         3
-     *   4   5    6    7
-     *         10    9
+     *     2       3
+     *   4    5|6    7
+     *          /\
+     *          9 10
      *
      */
 
@@ -214,6 +225,7 @@ public class BinaryTreePrintBottomView {
 
     printBottomView1(tree.root);
 
-    verticalOrder(tree.root);
+    System.out.println("Vertical Order::");
+    System.out.println(verticalOrder(tree.root));
   }
 }

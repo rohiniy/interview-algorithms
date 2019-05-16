@@ -17,16 +17,17 @@ public class RemoveKDigitsToFormSmallestNo {
     for (int i=0; i< n; i++) {
       char c = num.charAt(i);
 
-      while (k > 0 && !stack.isEmpty() && stack.peek() > c) {
+      while (k > 0 && !stack.isEmpty() && stack.peek() >= c) {
         stack.pop();
         k--;
       }
       stack.push(c);
     }
 
-    if (k == 1) {
+    while (k > 0) {
       // remove the last element as it is the largest
       stack.pop();
+      k--;
     }
 
     int size = stack.size();
@@ -51,6 +52,6 @@ public class RemoveKDigitsToFormSmallestNo {
 
   public static void main(String args[]) {
     RemoveKDigitsToFormSmallestNo obj = new RemoveKDigitsToFormSmallestNo();
-    System.out.println(obj.removeKdigits("12340", 4));
+    System.out.println(obj.removeKdigits("19888", 4));
   }
 }

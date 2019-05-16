@@ -22,7 +22,8 @@
  * 2. All components are connected
  *
  * Solution 1:
- * 1. Check cycle using DFS - visited array and check if already visited then is it parent means 1-0, 0-1
+ * 1. Check cycle using DFS - visited array and check if already visited then is it parent means
+ * 1-0, 0-1
  * If not then there is a cycle
  *
  * 2. To check if the graph is not dis-connected - check if all vertices in visited[] is true
