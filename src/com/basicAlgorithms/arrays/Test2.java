@@ -1,3 +1,6 @@
+/**
+ * Tempus Test
+ */
 package com.basicAlgorithms.arrays;
 
 public class Test2 {
@@ -26,11 +29,11 @@ public class Test2 {
       r = Math.max(r, count);
     }
 // 1 0 0
-    return r == 0? result -1 : result + r;
+    return result == n-1 && r != 0 ? result -1 : result + r;
   }
 
   public static void main(String args[]) {
-    int result = solution(new int [] {1, 1, 0, 1, 0, 0});
+    int result = solution(new int [] {1, 0});
     //int result = solution(new int [] {1,1,1,0});
 
     System.out.println(result);

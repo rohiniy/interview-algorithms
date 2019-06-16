@@ -34,6 +34,30 @@ public class TwoSum {
     return null;
   }
 
+  public static int[] twoSumRec(int arr[], int target) {
+    int result[] = {-1, -1};
+    twoSumRecHelper(arr, 0, arr.length-1, target, result);
+    return result;
+  }
+
+  private static boolean twoSumRecHelper(int arr[], int p, int q, int target, int result[]) {
+    if (p >= q) {
+      return false;
+    }
+    if (arr[p] + arr[q] == target) {
+      result[0] = p;
+      result[1] = q;
+      return true;
+    }
+
+    if (arr[p] + arr[q] < target) {
+      return twoSumRecHelper(arr, p+1, q, target, result);
+    }
+    else {
+      return twoSumRecHelper(arr, p, q-1, target, result);
+    }
+  }
+
   /**
    * If the array is sorted then just have 2 pointers - 1 at the start and other at the end
    * Then just do sum of 2 numbers and see if it is less or greater than the target
@@ -48,6 +72,14 @@ public class TwoSum {
     int result[];
     result = obj.twoSum(nums, target);
 
-    RemoveDuplicates.printArray(result, result.length);
+    if (result != null) {
+      RemoveDuplicates.printArray(result, result.length);
+    }
+
+    int result1[] = twoSumRec(nums, target);
+
+    if (result1 != null) {
+      RemoveDuplicates.printArray(result1, result1.length);
+    }
   }
 }

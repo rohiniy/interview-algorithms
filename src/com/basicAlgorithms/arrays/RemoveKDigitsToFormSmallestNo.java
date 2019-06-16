@@ -53,5 +53,6 @@ public class RemoveKDigitsToFormSmallestNo {
   public static void main(String args[]) {
     RemoveKDigitsToFormSmallestNo obj = new RemoveKDigitsToFormSmallestNo();
     System.out.println(obj.removeKdigits("19888", 4));
+    // 23178 k=1 output = 2178 remove 3
   }
 }

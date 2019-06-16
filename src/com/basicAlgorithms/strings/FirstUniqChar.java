@@ -11,10 +11,6 @@
  * return 2.
  * Note: You may assume the string contain only lowercase letters.
  *
- * Solution:
- * 1. Take an int array [26], traverse the string and put each letter at index (letter-'a') count of letter
- * Then traverse the string and find the 1st index in the int array where count=1
- *
  */
 
 package com.basicAlgorithms.strings;
@@ -34,4 +30,12 @@ public class FirstUniqChar {
   public static void main(String args[]) {
     System.out.println(firstUniqChar("lleetcode"));
   }
+
+  /**
+   *  * Solution:
+   *  * 1. Take an int array [26], traverse the string and put each letter at index (letter-'a')
+   *  count of letter
+   *  * Then traverse the string and find the 1st index in the int array where count=1
+   *  *
+   */
 }

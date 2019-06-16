@@ -96,8 +96,8 @@ public class ArrayBinarySearchRotatedSorted {
   }
 
   public static void main(String args[]) {
-    int nums[] = {5, 6, 7, 1, 3, 4};
-    int target = 8;
+    int nums[] = {7, 6};
+    int target = 6;
     System.out.println(search(nums, target));
   }
 }

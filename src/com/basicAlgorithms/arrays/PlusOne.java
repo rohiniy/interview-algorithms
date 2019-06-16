@@ -12,7 +12,7 @@
  *
  * Input: [9,9,9]
  * Output: [1,0,0,0]
- * Explanation: The array represents the integer 123.
+ * Explanation: The array represents the integer 999.
  * Example 2:
  *
  * Input: [4,3,2,1]

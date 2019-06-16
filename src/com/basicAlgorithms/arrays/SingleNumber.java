@@ -1,24 +1,21 @@
 /**
- * Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+ * Given a non-empty array of integers, every element appears twice except for one.
+ * Find that single one.
  *
  * Note:
  *
- * Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+ * Your algorithm should have a linear runtime complexity.
+ * Could you implement it without using extra memory?
  *
  * Example 1:
  *
  * Input: [2,2,1]
  * Output: 1
- * Example 2:
  *
+ * Example 2:
  * Input: [4,1,2,1,2]
  * Output: 4
  *
- * Solution:
- * 1. HashMap: Store <Integer, Integer count of appearances>.
- * Traverse again and see the count = 1 integer
- *
- * 2. Bit Manipulation: XOR
  */
 package com.basicAlgorithms.arrays;
 
@@ -61,7 +58,8 @@ public class SingleNumber {
   public static int findUniqueNumberWithBitManipulation(int nums[]) {
     // XOR - exclusive or means it returns 1 if the numbers are distinct
     // E.g.: Bit manipulation 1^1 = 0, 1 ^ 0  = 1
-    // As the numbers which appear twice will be cancelled and become 0 and only the one which is single
+    // As the numbers which appear twice will be cancelled and become 0 and only the one which
+    // is single
     // will be XOR with 0 = single number. A^A = 0 and A^B^A = B
 
     int result = nums[0];
@@ -112,4 +110,12 @@ public class SingleNumber {
     System.out.println(findUniqueNumberWithBitManipulation(arr));
     System.out.println(getSingle(arr3, arr3.length));
   }
+
+  /**
+   *  * Solution:
+   *  * 1. HashMap: Store <Integer, Integer count of appearances>.
+   *  * Traverse again and see the count = 1 integer
+   *  *
+   *  * 2. Bit Manipulation: XOR
+   */
 }

@@ -16,12 +16,7 @@
  * What if the inputs contain unicode characters? How would you adapt your solution to such case?
  *
  *
- * Solution:
- * 1. Sort the strings and then compare withing a single loop - O(nlogn)
- * 2. Put 1 string in hashmap<Character,Integer> - (letter, count of letter) then traverse over other string
- * and decrement the count - O(n)
- * 3. Just lowercase hence, take int array [26] add count for 1 string and decrement count for other string.
- * If all 0 then true else false
+ *
  */
 package com.basicAlgorithms.strings;
 
@@ -97,4 +92,13 @@ public class FindAnagrams {
     System.out.println(isAnagramByHashMap("a", "b"));
     System.out.println(isAnagram("a", "b"));
   }
+
+  /**
+   * Solution:
+   *  * 1. Sort the strings and then compare withing a single loop - O(nlogn)
+   *  * 2. Put 1 string in hashmap<Character,Integer> - (letter, count of letter) then traverse over other string
+   *  * and decrement the count - O(n)
+   *  * 3. Just lowercase hence, take int array [26] add count for 1 string and decrement count for other string.
+   *  * If all 0 then true else false
+   */
 }

@@ -5,7 +5,9 @@
  *
  * Example:
  *
- * Input:  [1,2,3,4]
+ * Input:  [1, 2, 3, 4]
+ *          1   1  2  6
+ *                8   6
  * Output: [24,12,8,6]
  *
  * Note: Please solve it without division and in O(n).
@@ -43,7 +45,11 @@ public class ArrayProductIteself {
     for (int i=1; i<nums.length; i++) {
       result[i] = result[i-1] * nums[i-1];
     }
-
+/**
+ *  * Input:  [1, 2, 3, 4]
+ *  *          1   1  2  6
+ *  *              12 8   6
+ */
     // go from right to left
     int temp = nums[nums.length-1]; // last value in original array
     for (int i = nums.length -2; i >= 0; i--) {

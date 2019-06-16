@@ -23,7 +23,9 @@
  *
  *
  * Solution:
- * String: abfbcde
+ * String: pwwkew
+ * HAshmap<Char, index>
+ *  </Char,>
  *
  */
 

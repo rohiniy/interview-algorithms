@@ -1,10 +1,9 @@
 /**
  * Get the character count in the order of the string input
  * Also count spaces
+ * Input - "Tthe Academy"
+ * Output - 't':2,'h':1,'e':2,' ':1,'a':2,'c':1,'d':1,'m':1,'y':1
  *
- *
- * SOLUTION:
- * You can use LinkedHashMap<Character, Integer>
  */
 package com.basicAlgorithms.arrays;
 
@@ -58,6 +57,8 @@ public class CharCount {
     return result;
   }
 
+  // Time complexity = O(n) n= len of string
+  // Space complexity = O(n)
   static void CountLettersByLinkedHashMap(String input) {
     LinkedHashMap<Character, Integer> map = new LinkedHashMap<>();
 
@@ -82,3 +83,8 @@ public class CharCount {
     CountLettersByLinkedHashMap(input);
   }
 }
+
+/**
+ *  * SOLUTION:
+ *  * You can use LinkedHashMap<Character, Integer>
+ */

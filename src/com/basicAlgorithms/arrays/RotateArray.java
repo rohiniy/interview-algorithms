@@ -4,7 +4,8 @@ Given an array, rotate the array to the right by k steps, where k is non-negativ
 Example 1:
 
 Input: [1,2,3,4,5,6,7] and k = 3
-Output: [5,6,7,1,2,3,4]
+Output:[5,6,7,1,2,3,4]
+
 Explanation:
 rotate 1 steps to the right: [7,1,2,3,4,5,6]
 rotate 2 steps to the right: [6,7,1,2,3,4,5]
@@ -75,16 +76,23 @@ public class RotateArray {
     // temp =
     int temp;
     int n = arr.length;
-    for (int i=0; i<k; i++) {
+    for (int i=0; i<k; i++) { // k
       temp = arr[n-1];
 
-      for(int j = n-1; j > 0; j--) {
+      for(int j = n-1; j > 0; j--) { // n-1
         arr[j] = arr[j-1];
       }
       arr[0] = temp;
     }
   }
 
+  /**
+   *  [1,2,3,4,5,6,7]
+   *   0 1 2 3 4 5 6
+   *  [4,5,6,7,1,2,3]
+   * @param arr
+   * @param k
+   */
   public static void rotateArrayLeft(int arr[], int k) {
     int temp[] = new int[arr.length];
 

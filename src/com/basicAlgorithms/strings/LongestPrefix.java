@@ -17,12 +17,6 @@
  * All given inputs are in lowercase letters a-z.
  *
  *
- * Solution:
- * Find the smallest string then search for other strings to start with that substring
- * If not then try to reduce the substring and go on in loop
- *
- * O(smallest String length * n) = O(n^2)
- *
  *
  *
  *     *****************
@@ -50,7 +44,7 @@ public class LongestPrefix {
       smallestStr = str.length() < smallestStr.length() ? str : smallestStr;
     }
 
-    // check in all the strings if there is asubstring of length of smallesString or less than that
+    // check in all the strings if there is a substring of length of smallesString or less than that
 
     /*****************
      * IMPORTANT - SUBSTRING METHOD (int startIndex, int endIndex)
@@ -115,7 +109,15 @@ public class LongestPrefix {
 
   public static void main(String args[]) {
     LongestPrefix obj = new LongestPrefix();
-    String [] strArr = {"a"};
+//    String [] strArr = {"a"};
+    String [] strArr = {"carr, cardog, carrace"};
     System.out.println(obj.longestCommonPrefix(strArr));
   }
+  /**
+   *  * Solution:
+   *  * Find the smallest string then search for other strings to start with that substring
+   *  * If not then try to reduce the substring and go on in loop
+   *  *
+   *  * O(smallest String length * n) = O(n^2)
+   */
 }

@@ -1,3 +1,13 @@
+/**
+ * {4, 6, 2, 2, 6,6,1};
+ *
+ * 4, 0
+ * 6, [1, 4, 5]
+ * 2, [2, 3]
+ * Output = 4 as 6 is repeated and index 5 - 1 = 4
+ * Get the maximum difference of the indices of the same elements.
+ * (Return the distance of farthest apart same number)
+ */
 package com.basicAlgorithms.arrays;
 
 import java.util.*;
@@ -11,21 +21,21 @@ class Solution {
       return result;
     }
 
-    Map<Integer, TreeSet<Integer>> map = new HashMap<>();
+    Map<Integer, List<Integer>> map = new HashMap<>();
 
     // insert all values in the map as value, indices in treeset
     for (int i=0; i< N; i++) {
-      TreeSet<Integer> set = map.getOrDefault(A[i], new TreeSet<Integer>());
+      List<Integer> set = map.getOrDefault(A[i], new ArrayList<Integer>());
       set.add(i);
       map.put(A[i], set);
     }
 
 
     for (Integer key: map.keySet()) {
-      TreeSet<Integer> setIndices = map.get(key);
+      List<Integer> setIndices = map.get(key);
       if (setIndices != null && setIndices.size() > 1) {
         // if there are more than 1 indices then  take the difference of the indices
-        result = Math.max(result, (setIndices.last() - setIndices.first()));
+        result = Math.max(result, (setIndices.get(setIndices.size()-1) - setIndices.get(0)));
       }
     }
 
@@ -42,7 +52,8 @@ class Solution {
   }
 
   public static void main(String args[]) {
-    int[] A = {1, 2, 6, 6, 2,1,1};
+    //int[] A = {4, 6, 2, 2, 6,6,1};
+    int[] A = {41, 6, 20, 2, 60,1};
     int val = solution(A);
     System.out.println(val);
   }
