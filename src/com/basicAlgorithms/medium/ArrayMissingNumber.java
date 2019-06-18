@@ -16,10 +16,6 @@
  * Your algorithm should run in linear runtime complexity.
  * Could you implement it using only constant extra space complexity?
  *
- * SOLUTION:
- * 1. Get the maximum no and do the addition by the formula = n(n+1)/2
- * 2. Then subtract sum of given numbers from the n(n+1)/2 sum and the remaining number
- * is what is missing
  */
 package com.basicAlgorithms.medium;
 
@@ -84,4 +80,10 @@ public class ArrayMissingNumber {
     System.out.println(findingMissingMix(nums));
 
   }
+  /**
+   *  * SOLUTION:
+   *  * 1. Get the maximum no and do the addition by the formula = n(n+1)/2
+   *  * 2. Then subtract sum of given numbers from the n(n+1)/2 sum and the remaining number
+   *  * is what is missing
+   */
 }

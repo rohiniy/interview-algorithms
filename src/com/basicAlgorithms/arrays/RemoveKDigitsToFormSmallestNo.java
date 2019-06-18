@@ -1,3 +1,8 @@
+/**
+ * Get the smallest possible number by removing k digits from the number
+ *  23178 k=1 output = 2178 remove 3
+ *  23178 k = 3, remove 3 elements and make the number the smallest = 17
+ */
 package com.basicAlgorithms.arrays;
 import java.util.*;
 

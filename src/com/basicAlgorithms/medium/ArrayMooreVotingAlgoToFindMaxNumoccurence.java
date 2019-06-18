@@ -15,33 +15,7 @@
  *
  * Input: [2,2,1,1,1,2,2]
  * Output: 2
- *
- *
- *
- *
- * SOLUTION:
- *
- * HashMap and do it : O(n) space
- * O(1) space - use Moore's Voting Algorithm
- *
- * 2 Steps:
- * 1. Find a Candidate - majority by Moore's Algo
- * 2. Confirm by iterating over the array and check if the candidate is actually maximum
- *
- * Moore's Voting is finding a probable candidate which can be majority.
- * findCandidate(a[], size)
- * 1.  Initialize index and count of majority element
- *      maj_index = 0, count = 1
- * 2.  Loop for i = 1 to size – 1
- *     (a) If a[maj_index] == a[i]
- *           count++
- *     (b) Else
- *         count--;
- *     (c) If count == 0
- *           maj_index = i;
- *           count = 1
- * 3.  Return a[maj_index]
- *
+
  *
  * ////////////// Problem 2 - Medium  -  MAJORITY ELEMENT II
  *
@@ -111,7 +85,7 @@ public class ArrayMooreVotingAlgoToFindMaxNumoccurence {
     // use Moore's algorithm
     // here only 2 candidates can be there as it is more than n/3
     //E.g.: for array of size 8: n/3 = 2 so more than than means
-    // at least 3, so 3+3 = 6 so only 2 candidates are posible in any size array
+    // at least 3, so 3+3 = 6 so only 2 candidates are possible in any size array
 
     // call Moore's algorithm twice to find 2 majority candidates and then
     // confirm if it is maximum
@@ -188,4 +162,26 @@ public class ArrayMooreVotingAlgoToFindMaxNumoccurence {
 
     System.out.println(majorityElementList(new int[]{6, 6, 6, 7, 7}));
   }
+
+  /**
+   * SOLUTION:
+   * HashMap and do it : O(n) space
+   * O(1) space - use Moore's Voting Algorithm
+   * 2 Steps:
+   * 1. Find a Candidate - majority by Moore's Algo
+   * 2. Confirm by iterating over the array and check if the candidate is actually maximum
+   * Moore's Voting is finding a probable candidate which can be majority.
+   * findCandidate(a[], size)
+   * 1.  Initialize index and count of majority element
+   *      maj_index = 0, count = 1
+   * 2.  Loop for i = 1 to size – 1
+   *     (a) If a[maj_index] == a[i]
+   *           count++
+   *     (b) Else
+   *         count--;
+   *     (c) If count == 0
+   *           maj_index = i;
+   *           count = 1
+   * 3.  Return a[maj_index]
+   */
 }

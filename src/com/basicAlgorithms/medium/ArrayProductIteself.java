@@ -16,11 +16,6 @@
  * Could you solve it with constant space complexity?
  * (The output array does not count as extra space for the purpose of space complexity analysis.)
  *
- * Solution:
- *
- * 1. Go from left to right and keep multiplying to the left value so in this we have the last
- * value correct
- * 2. Go from right to left
  */
 package com.basicAlgorithms.medium;
 
@@ -67,4 +62,12 @@ public class ArrayProductIteself {
       System.out.print(" "+ result[i] + " ");
     }
   }
+
+/**
+ *  Solution:
+ *
+ *  1. Go from left to right and keep multiplying to the left value so in this we have the last
+ *  value correct
+ *  2. Go from right to left
+ */
 }

@@ -15,12 +15,6 @@
  * Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
  *
  *
- * SOLUTIONS:
- * 1. Hashmap and then Min heap of size k so that u have top freq k elements
- * 2. BUCKETS need to be used where bucket is Array of list to store
- *     // to store the numbers with freq at that index
- *     // number with freq 1 at index 1
- *     //             freq 2 at index 2
  */
 package com.basicAlgorithms.medium;
 import java.util.*;
@@ -81,6 +75,8 @@ public class ArrayMostFreqKElements {
    *
    * The last step to build an output list has
    * O(klog(k)) time complexity.
+   *
+   * total = N log k
    * @param nums
    * @param k
    * @return
@@ -123,5 +119,14 @@ public class ArrayMostFreqKElements {
     Collections.reverse(result);
     return result;
   }
+
+  /**
+   * SOLUTIONS:
+   * 1. Hashmap and then Min heap of size k so that u have top freq k elements
+   * 2. BUCKETS need to be used where bucket is Array of list to store
+   *     // to store the numbers with freq at that index
+   *     // number with freq 1 at index 1
+   *     //             freq 2 at index 2
+   */
 
 }
